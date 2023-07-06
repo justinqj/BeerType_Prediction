@@ -26,7 +26,7 @@ class Beer(BaseModel):
 @app.post("/beer_style/")
 async def predict_beer_style(beer: Beer):
     # Create dataframe for target encoding
-    brewery_df = pd.DataFrame([brewery_name], columns=['brewery_name'])
+    brewery_df = pd.DataFrame([beer.brewery_name], columns=['brewery_name'])
     encoded_brewery_name = encoder.transform(brewery_df)['brewery_name'].values[0]
     
     # Create final input_data
