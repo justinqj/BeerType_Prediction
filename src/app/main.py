@@ -3,6 +3,7 @@ from pydantic import BaseModel
 from typing import Optional
 import joblib
 import numpy as np
+import pandas as pd
 
 app = FastAPI()
 
@@ -15,19 +16,15 @@ encoder = joblib.load("../models/target_encoder.joblib")
 median_abv = 5.0
 
 class Beer(BaseModel):
-    brewery_name: Optional[str]
+    brewery_name: str
     review_aroma: float
     review_appearance: float
     review_palate: float
     review_taste: float
-    beer_abv: Optional[float]
+    beer_abv: float
 
 @app.post("/beer_style/")
 async def predict_beer_style(beer: Beer):
-    # Fill missing values
-    brewery_name = beer.brewery_name if beer.brewery_name is not None else 'unknown'
-    beer_abv = beer.beer_abv if beer.beer_abv is not None else median_abv
-
     # Create dataframe for target encoding
     brewery_df = pd.DataFrame([brewery_name], columns=['brewery_name'])
     encoded_brewery_name = encoder.transform(brewery_df)['brewery_name'].values[0]
