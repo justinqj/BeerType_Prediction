@@ -1,7 +1,6 @@
 fastapi
 pydantic
 numpy
-pickle
 tensorflow
 typing
 uvicorn

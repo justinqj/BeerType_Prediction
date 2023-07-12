@@ -38,4 +38,13 @@ Project Organization
 
 --------
 
+## Methods for Generating Predictions
+1. Deploying Webapp on localhost through uvicorn /
+navigate to `src/app` and run the command `uvicorn main:app --reload` in your terminal /
+then navigate to `https://localhost:8000` /
+from here you can access the API endpoints and enter in values to generate one or more predictions
+
+2. Deploy a docker container and 
+
+
 <p><small>Project based on the <a target="_blank" href="https://drivendata.github.io/cookiecutter-data-science/">cookiecutter data science project template</a>. #cookiecutterdatascience</small></p>
