@@ -1,7 +1,8 @@
-tensorflow
 fastapi
+pydantic
+numpy
+pickle
+tensorflow
+typing
 uvicorn
 gunicorn
-numpy
-pandas
-scikit-learn
