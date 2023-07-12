@@ -41,6 +41,9 @@
 # #     pred = model.predict(obs)
 # #     return JSONResponse(pred.tolist())
 
+## ------------------------------
+
+
 # from fastapi import FastAPI, Form
 # from starlette.responses import HTMLResponse
 # from tensorflow.keras.models import load_model
@@ -80,15 +83,17 @@
 #     return 'GMM Clustering is all ready to go!'
 
 # # Enforce datatypes
-# def format_features(Appearance: float, Aroma: float, Palate: float, Taste: float, ABV: float, Brewery: str):
+# def format_features(brewery_name: str, review_aroma: float, review_appearance: float, review_palate: float, review_taste: float, beer_abv: float):
+#     brewery_id = brewery_index.index(brewery_name)
 #     return {
-#         'review_appearance': [Appearance],
-#         'review_aroma': [Aroma],
-#         'review_palate': [Palate],
-#         'review_taste': [Taste],
-#         'beer_abv': [ABV],
-#         'brewery_name': [Brewery]
+#         'brewery_name': [brewery_id],
+#         'review_aroma': [review_aroma],
+#         'review_appearance': [review_appearance],
+#         'review_palate': [review_palate],
+#         'review_taste': [review_taste],
+#         'beer_abv': [beer_abv]
 #     }
+
 
 
 # # Load the training data
@@ -130,7 +135,7 @@
 # @app.post("/beer/type")
 # def predict(review_appearance: float, review_aroma: float, review_palate: float, review_taste: float, beer_abv: float, brewery_name: str):
 #     # Encode the brewery_name
-#     brewery_name_encoded = encoder.transform([brewery_name])
+#     brewery_name_encoded = encoder.transform(df[brewery_name])
 
 #     features = format_features(review_appearance, review_aroma, review_palate, review_taste, beer_abv, brewery_name_encoded)
 #     obs = pd.DataFrame(features)
@@ -138,7 +143,6 @@
 #     global model
 #     pred = model.predict(obs)
 #     return JSONResponse(pred.tolist())
-
 
 from fastapi import FastAPI
 from pydantic import BaseModel
@@ -200,3 +204,4 @@ def model_architecture():
     architecture = [layer.get_config() for layer in model.layers]
     # Return the architecture
     return {"architecture": architecture}
+
