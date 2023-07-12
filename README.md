@@ -39,7 +39,7 @@ Project Organization
 --------
 
 ## Methods for Generating Predictions
-1. Deploying Webapp on localhost through uvicorn /
+1. Deploying Webapp on localhost through uvicorn \
 navigate to `src/app` and run the command `uvicorn main:app --reload` in your terminal /
 then navigate to `https://localhost:8000` /
 from here you can access the API endpoints and enter in values to generate one or more predictions
