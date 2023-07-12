@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 from starlette.responses import JSONResponse
-# from tensorflow.keras.models import load_model
+import tensorflow as tf
 import pandas as pd
 
 app = FastAPI()
@@ -8,11 +8,8 @@ app = FastAPI()
 # Initialize the model variable
 model = None
 
-# # Event handler for loading the model before the server starts
-# @app.on_event("startup")
-# def load_model_on_startup():
-#     global model
-#     model = load_model("/src/models/stefan_dev.h5")
+model = tf.keras.models.load_model("/src/models/best.h5")
+# model = keras.models.load_model("models/best.h5")
 
 @app.get("/")
 def read_root():
@@ -20,7 +17,11 @@ def read_root():
 
 @app.get('/health', status_code=200)
 def healthcheck():
-    return 'GMM Clustering is all ready to go!'
+    return 'Deep Learning Model is ready to go!'
+
+@app.get("/model/architecture")
+async def architecture():
+    return print(model.summary())
 
 # # Enforce datatypes
 # def format_features(Appearance: int, Aroma: int, Palate: int, Taste: int, ABV: int, Brewery: str):
