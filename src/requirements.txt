@@ -1,9 +1,7 @@
+tensorflow
 fastapi
 uvicorn
 gunicorn
-# joblib
 numpy
 pandas
 scikit-learn
-# keras
-# tensorflow

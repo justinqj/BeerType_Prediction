@@ -7,6 +7,7 @@ from tensorflow.keras.models import load_model
 import tensorflow as tf
 from typing import List
 
+
 # Define the app
 app = FastAPI()
 
@@ -26,6 +27,7 @@ async def startup_event():
             le_beer_name = pickle.load(f)
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
+
 
 @app.get("/")
 def welcome():
