@@ -1,4 +1,4 @@
-adsi-at2
+Beer Type Prediction using CNN model
 ==============================
 The aim of this project is to create a neural network machine learning model that will accurately predict a type of beer based on some rating criterias such as appearance, aroma, palate or taste. This model will then be packaged in a docker container along with a fastapi script to create a webapp for hosting this model, capable of making ongoing predictions in real time.
 
